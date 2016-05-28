@@ -3,7 +3,7 @@ Contributors: Mike_Oberdick
 Tags: woocommerce, e-commerce, product, badge, new product, new product badge, on sale, on sale badge, sale, sale badge, product badge
 Requires at least: 3.5
 Tested up to: 4.5
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,3 +44,6 @@ Initial release
 
 = 1.1 =
 Defined an absolute path for use when loading the stylesheet
+
+= 1.2 =
+Added the ability for a user to choose whether or not to display the badge on the single product page as well as shop page
