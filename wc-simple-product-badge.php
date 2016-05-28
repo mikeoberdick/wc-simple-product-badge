@@ -59,6 +59,12 @@ add_action( 'woocommerce_product_options_general_product_data', 'wc_simple_produ
 			'description'       => __( 'e.g. 14', 'wc-simple-product-badge' ),
 			'type'              => 'number',
 		) );
+		
+		// Badge on Single Page Checkbox Field
+		woocommerce_wp_checkbox(array( 
+			'id'                => '_wc_simple_product_badge_single_page_option', 
+			'label'             => __( 'Show on Single Product Page?', 'wc-simple-product-badge' ),
+		) );		
 
         echo '</div>';
     }
@@ -70,16 +76,18 @@ add_action( 'woocommerce_process_product_meta', 'wc_simple_product_badge_fields_
         $title = $_POST['_wc_simple_product_badge_title'];
         $class = $_POST['_wc_simple_product_badge_class'];
 		$duration = $_POST['_wc_simple_product_badge_duration'];
+		$single_opt = isset( $_POST['_wc_simple_product_badge_single_page_option'] ) ? 'yes' : 'no';
 
         update_post_meta( $post_id, '_wc_simple_product_badge_title', esc_attr( $title ) );
         update_post_meta( $post_id, '_wc_simple_product_badge_class', esc_attr( $class ) );
 		update_post_meta( $post_id, '_wc_simple_product_badge_duration', esc_attr( $duration ) );
+		update_post_meta( $post_id, '_wc_simple_product_badge_single_page_option', esc_attr( $single_opt ) );
     }	
 	
-// Display the product badge
+// Display the product badge on the shop page
 
-add_action( 'woocommerce_after_shop_loop_item_title', 'wc_simple_product_badge_display', 30 );
-    function wc_simple_product_badge_display() {
+add_action( 'woocommerce_after_shop_loop_item_title', 'wc_simple_product_badge_display_shop', 30 );
+    function wc_simple_product_badge_display_shop() {
         $title = get_post_meta( get_the_ID(), '_wc_simple_product_badge_title', true ); // badge title
         $class = get_post_meta( get_the_ID(), '_wc_simple_product_badge_class', true ); // badge class
 		$duration = get_post_meta( get_the_ID(), '_wc_simple_product_badge_duration', true ); // badge duration
@@ -92,6 +100,31 @@ add_action( 'woocommerce_after_shop_loop_item_title', 'wc_simple_product_badge_d
             echo '<span class="wc_simple_product_badge ' . $class . '">' . $title . '</span>';
         }
     }
+	
+// Display the product badge on the single page
+	
+add_filter( 'woocommerce_single_product_image_html', 'wc_simple_product_badge_display_single' );	
+	function wc_simple_product_badge_display_single( $img_html ) {
+		$title = get_post_meta( get_the_ID(), '_wc_simple_product_badge_title', true ); // badge title
+        $class = get_post_meta( get_the_ID(), '_wc_simple_product_badge_class', true ); // badge class
+		$duration = get_post_meta( get_the_ID(), '_wc_simple_product_badge_duration', true ); // badge duration
+		$single_opt = get_post_meta( get_the_ID(), '_wc_simple_product_badge_single_page_option', true ); // badge on single page
+		$postdate = get_the_time( 'Y-m-d' ); // post date
+		$postdatestamp = strtotime( $postdate ); // post date in unix timestamp
+		$difference = round ((time() - $postdatestamp) / (24*60*60));  // difference in days between now and product's post date
+		
+		if ( !empty( $title ) && empty( $duration ) && $single_opt === 'yes' || !empty( $title ) && $difference <= $duration && $single_opt === 'yes' ){ // Check to see if there is a title and the product is still within the duration timeframe ()if specified) and the checkbox is checked to show on single page view
+			$class = !empty( $class ) ? $class : '';
+            echo '<span class="wc_simple_product_badge ' . $class . '">' . $title . '</span>';
+			return $img_html;
+}
+
+		elseif ( $single_opt === 'no' ) { // Check to see if the checkbox is unchecked to show on single page view
+			return $img_html;
+		}
+
+	}
+
 }
 
 ?>

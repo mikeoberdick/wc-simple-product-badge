@@ -9,6 +9,17 @@
 	text-align:center;
 }
 
+.single .wc_simple_product_badge {
+	position: absolute;
+    top: 0;
+    width: inherit;
+    padding: 10px 0;
+    font-size: 16px;
+    background-color: rgba(255, 0, 0, 0.75);
+    color: #ffffff;
+    text-align: center;
+}
+
 .wc_simple_product_badge.orange {
 	background-color: rgba(255, 140, 0, 0.75) !important;
 }
