@@ -1,0 +1,54 @@
+# Copyright (C) 2016 WC Simple Product Badge
+# This file is distributed under the same license as the WC Simple Product Badge package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WC Simple Product Badge 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-simple-product-"
+"badge\n"
+"POT-Creation-Date: 2016-03-10 00:44:49+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: wc_simple_product_badge.php:39
+msgid "Badge Title"
+msgstr ""
+
+#: wc_simple_product_badge.php:40
+msgid "e.g. New Product"
+msgstr ""
+
+#: wc_simple_product_badge.php:46
+msgid "CSS Class"
+msgstr ""
+
+#: wc_simple_product_badge.php:47
+msgid "e.g. orange, yellow, green, blue, purple, black"
+msgstr ""
+
+#: wc_simple_product_badge.php:53
+msgid "Duration"
+msgstr ""
+
+#: wc_simple_product_badge.php:54
+msgid "e.g. 14"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WC Simple Product Badge"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Display a simple product badge overlay for a WooCommerce store product."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Designs 4 The Web"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://designs4theweb.com"
+msgstr ""

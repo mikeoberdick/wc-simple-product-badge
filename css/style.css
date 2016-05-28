@@ -1,0 +1,36 @@
+.wc_simple_product_badge {
+	position: absolute;
+	top: 0;
+	width:100%;
+    padding: 10px 0;
+	font-size: 16px;
+	background-color: rgba(255, 0, 0, 0.75);
+	color: #ffffff;
+	text-align:center;
+}
+
+.wc_simple_product_badge.orange {
+	background-color: rgba(255, 140, 0, 0.75) !important;
+}
+
+.wc_simple_product_badge.yellow {
+	background-color: rgba(255, 255, 0, 0.75) !important;
+	color: #000;
+}
+
+.wc_simple_product_badge.green {
+	background-color: rgba(0, 255, 0, 0.75) !important;
+}
+
+.wc_simple_product_badge.blue {
+	background-color: rgba(0, 0, 255, 0.75) !important;
+}
+
+.wc_simple_product_badge.purple {
+	background-color: rgba(128, 0, 128, 0.75) !important;
+}
+
+.wc_simple_product_badge.black {
+	background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
